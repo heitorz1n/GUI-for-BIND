@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Helmet from 'react-helmet';
+import Screen from './Screen';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Dominios from './dominio';
+import Subdominios from "./subdominios";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App">
+      <Helmet>
+        { /*<title>OI</title> */ }
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      </Helmet>
+      <BrowserRouter>
+      <Switch>
+      <Route exact path="/" component={Screen} />
+      <Route exact path="/Dominios" component={Dominios} />
+      <Route exact path="/Subdominios" component={Subdominios} />
+      <Screen />
+      </Switch>
+      </BrowserRouter>
     </div>
   );
 }
